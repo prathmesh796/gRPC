@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+message Person {
+  string name = 1;
+  int32 age = 2;
+}
+
+message AddPersonResponse {
+  string message = 1;
+}
+
+message GetPersonByNameRequest {
+  string name = 1;
+}
+
+message GetPersonByNameResponse {
+  repeated Person persons = 1;
+}
+
+service PersonService {
+  rpc addPerson(Person) returns (AddPersonResponse);
+
+  rpc getPersonByName (GetPersonByNameRequest) returns (GetPersonByNameResponse);
+}
